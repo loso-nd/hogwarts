@@ -26,7 +26,7 @@ class App extends Component {
     }
   }
 
-  sortMe = (e) => { // remember to pass in the event for targeting 
+  sortMe = (e) => { // remember to pass in the event for targeting
      console.log(e.target.value)
     this.setState({
       sort: e.target.value
