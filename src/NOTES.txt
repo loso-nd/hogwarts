@@ -1,0 +1,72 @@
+** NOTES **
+
+* create an index displaying all hog tiles
+
+** {App} **
+!Information Flow
+- Understand the flow of the React App
+- Review info given and what is requried
+- README.md and deliverables 
+- Atempt to return hog names on the Dom first. so we have a flow .
+? Pass props to <HelloWorld />
+
+
+** {HelloWorld} **
+
+- import <HogCard />
+- The goal here is to get access to the props being passed in from {App}, iterate through the arr using .map() giving it a random param (singleHog) and returning <HogCard /> with the {singleHog} passed in as a param. This allow <HogCard /> to get access to the properties mapped into singleHog from the hogData.
+
+* render each hog name and picture in a tile
+
+** {HogCard} **
+
+- We have acess to the props from the mapped array singleCard, so we can call properties on name and the image.
+- img needs to be reformated dyanmically to take accound for all the images.
+- let pigImage require(...), add literal template for the name 
+- Create a method to represent the executuion of lowercase, spliting, and joining the names of the hog images. Then replace the image name inside tour pigImage with the invoked the method 
+
+* show the hog's details upon a user's click
+
+** {HogCard} **
+
+- Import HogDetails form HogDetails
+- Add onClick{} synhetic event to <div> enclosing the HogCard tile to show/hide details inside {HogCard}
+- How and where to keep track of click events? ->  Create state inside {HogCard}
+- How to check if the event was triggered from the state? -> Setstate inside {HogCard}
+- Always console.log("something?") synhetic events to check it works
+- <HogDetails /> placed under the img inside a tenaray statement if (showDetail) exist then show <HogDetails /> else {null} -> (all inside the {HogCard})
+
+** {HogDetails} **
+
+-react component
+-since i passed the entire hog data to <HogDetails /> from <HogCard /> I have access to all the properties inside the hog data.
+- line 7 allows us deconstuct the properties and write less code
+- translated the greased property into a ternary statement to set us up for filter and sort.
+
+
+* filter the hogs that are greased
+
+** {App} / {Nav} **
+
+How are where can we keep track of filterd hogs? based on user clicks->
+- Filter click button or a secton > onClick synthetic event
+- We can use the spinning pigglet as an Onclick to filter greased hogs
+- Create State inside {APP} is a great place to keep track of the filter grease, bc that is the one place {Navs} and we have access to our hogs
+- Need a method with a setState to let us know when the pigglet was clicked to update the boolean from F / T.
+- Add a greaseFilter method if grease state exist return a filtered on hog array that takes a single hog as a cb and returns a new arr of a hog.greased else return our orginal hogs. 
+-Since the orginal hogs data is the props passed into 
+<HelloWorld hogData={hogs} />  we can replace hogs with greaseFiler()
+
+* sort the hogs based on name
+* sort the hogs based on weight 
+
+** {App} / {Nav} **
+
+How are where can we keep track of sorting hogs? ->
+- sort calls for a dropdown > dropdown calls for onChange synthetic event 
+- Add dropdown functionality on the Navbar
+- Add a select dropdown functionality, and implement an onChange which will sort based on user selection (name or weight)
+- add sort to existing State inside {APP} is a great place to keep track of the sort function bc that is the one place {Navs} and we have access to our hogs
+- Add a method to updae the state via Setstate to keep track of changes on he dropdwon 
+- Add a method to that accounts for the greased Filter functionality when we want to sort by name & weight. Inside this method we implement a switch statement for each item and return a copy of the original greasedFilter state and sort that state.
+-Since we implemented Sort and Filter together , we can simply pass sortWithFilter as props to replace greasedFilter

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import HogCard from './HogCard'
 
 class HelloWorld extends Component {
   render() {
     return (
-      <div>
-        <h1>Hello World</h1>
+      <div className="ui grid container ">
+        {/* accessing the data, mapping thru the data return the names of the Obj in the array */}
+        {this.props.hogData.map(singleHog => <HogCard hog={singleHog}/> )}
       </div>
     );
   }
